@@ -25,7 +25,7 @@ button {
 .letter {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: auto;
   animation: letterMove 2s linear infinite;
 }
 

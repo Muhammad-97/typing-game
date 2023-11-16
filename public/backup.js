@@ -2,14 +2,8 @@ var score = 0;
 var timer = 60;
 var level = '';
 var letters = [];
-function howToPlay() {
-    var startPageHide = document.querySelector('.start-page');
-    startPageHide.style.display = 'none';
-    var displayLevels = document.querySelector('.how-to-play');
-    displayLevels.style.display = 'block';
-}
 function showLevels() {
-    var startPageHide = document.querySelector('.how-to-play');
+    var startPageHide = document.querySelector('.start-page');
     startPageHide.style.display = 'none';
     var displayLevels = document.querySelector('.level-selection');
     displayLevels.style.display = 'block';
@@ -44,6 +38,7 @@ function createLetters() {
         letterElement.innerText = letter;
         var elementWidth = letterElement.clientWidth;
         var maxXPos = window.innerWidth - elementWidth;
+        
         var xPos = Math.random() * maxXPos;
         var yPos = window.innerHeight;
         letterElement.style.left = "".concat(xPos, "px");
@@ -83,9 +78,9 @@ function animateLetter(letterElement, yPos) {
         yPos -= 2;
         letterElement.style.top = "".concat(yPos, "px");
         if (yPos < -30) {
-            letters = letters.filter(function (letter) {
-                return letter.element != letterElement;
-            });
+            letters = letters.filter((letter) => {
+                return letter.element != letterElement
+            })
             clearInterval(animationInterval);
             letterElement.remove();
         }

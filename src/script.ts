@@ -3,8 +3,15 @@ let timer: number = 60;
 let level: string = '';
 let letters: { element: HTMLSpanElement; letter: string; xPos: number; yPos: number }[] = [];
 
-function showLevels(): void {
+function howToPlay(): void {
   let startPageHide = document.querySelector('.start-page') as HTMLElement;
+  startPageHide.style.display = 'none';
+  let displayLevels = document.querySelector('.how-to-play') as HTMLElement;
+  displayLevels.style.display = 'block';
+}
+
+function showLevels(): void {
+  let startPageHide = document.querySelector('.how-to-play') as HTMLElement;
   startPageHide.style.display = 'none';
   let displayLevels = document.querySelector('.level-selection') as HTMLElement;
   displayLevels.style.display = 'block';
@@ -41,8 +48,10 @@ function createLetters(): void {
     const letterElement = document.createElement('span');
     letterElement.className = 'letter';
     letterElement.innerText = letter;
-
-    let xPos = Math.random() * window.innerWidth;
+    
+    const elementWidth = letterElement.clientWidth;
+    const maxXPos = window.innerWidth - elementWidth;
+    let xPos = Math.random() * maxXPos;
     let yPos = window.innerHeight;
 
     letterElement.style.left = `${xPos}px`;
@@ -67,14 +76,16 @@ function createLetters(): void {
     const popped: number = letters.findIndex((letterObj, index): any => {
       if (letterObj.letter === keyPressed) {
         letters.splice(index, 1);
-        document.getElementById('score')!.innerText = (++score).toString();
+        let scoreIncrease = document.getElementById('score') as HTMLSpanElement;
+        scoreIncrease.innerText = (++score).toString();
         letterObj.element.remove();
         return true;
       }
     });
 
     if (popped === -1) {
-      document.getElementById('score')!.innerText = (--score).toString();
+      let scoreDecrease = document.getElementById('score') as HTMLSpanElement;
+      scoreDecrease.innerText = (--score).toString();
     }
   });
 
@@ -89,6 +100,9 @@ function animateLetter(letterElement: HTMLElement, yPos: number): void {
     letterElement.style.top = `${yPos}px`;
 
     if (yPos < -30) {
+      letters = letters.filter((letter) => {
+        return letter.element != letterElement
+      })
       clearInterval(animationInterval);
       letterElement.remove();
     }
@@ -102,9 +116,9 @@ function generateRandomLetter(): string {
 
 function getLetterInterval(): number | undefined {
   if (level === 'beginner') {
-    return 2000;
+    return 1200;
   } else if (level === 'medium') {
-    return 1000;
+    return 800;
   } else if (level === 'hard') {
     return 500;
   }
