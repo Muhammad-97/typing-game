@@ -125,6 +125,14 @@ function getLetterInterval(): number | undefined {
 }
 
 function endGame(): void {
-  alert(`Game over! Your final score is ${score}`);
+  let gameOver = document.querySelector('.game-over-popup') as HTMLElement;
+  gameOver.style.display = 'block';
+  let finalScore = document.querySelector('.final-score') as HTMLElement;
+  finalScore.innerText = `Game over! Your final score is ${score}`;
+  let gamePageView = document.querySelector('.game-page') as HTMLElement;
+  gamePageView.style.display = 'none';
+}
+
+function restartGame(): void {
   location.reload();
 }

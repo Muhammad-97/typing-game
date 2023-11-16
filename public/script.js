@@ -107,6 +107,13 @@ function getLetterInterval() {
     }
 }
 function endGame() {
-    alert("Game over! Your final score is ".concat(score));
+    var gameOver = document.querySelector('.game-over-popup');
+    gameOver.style.display = 'block';
+    var finalScore = document.querySelector('.final-score');
+    finalScore.innerText = "Game over! Your final score is ".concat(score);
+    var gamePageView = document.querySelector('.game-page');
+    gamePageView.style.display = 'none';
+}
+function restartGame() {
     location.reload();
 }
