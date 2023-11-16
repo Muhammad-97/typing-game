@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(font/static/JosefinSans-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(font/static/JosefinSans-ExtraLight.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(font/static/JosefinSans-Medium.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(font/static/JosefinSans-Regular.ttf);
+  font-weight: 500;
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -10,11 +31,131 @@ body {
   overflow: hidden; 
 }
 
-.start-page,
-.level-selection,
-.game-page {
-  margin-top: 100px;
+h1,h2,h3,h4,h5,h6,p{
+  font-family: 'JosefinSans';
 }
+
+.start-page , .how-to-play , .level-selection , .game-page , .game-over-popup{
+  height: 100vh;
+  background: url(../images/startingBg.jpg)no-repeat center / cover;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-page h1{
+  font-family: 'JosefinSans';
+  font-size: 60px;
+  background-color: rgba(0,0,0,0.2);
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  animation-name: txtHeading;
+  animation-duration: 3s;
+}
+
+@keyframes txtHeading {
+  from {transform: translateY(-50vh);}
+  to {transform: translateY(0%);}
+}
+
+.start-page button{font-size: 41px; border-radius: 15px; border: 2px solid #000; background: rgba(0,0,0,0.2); font-weight: 700;position: relative; animation-name: buttonTxt; animation-duration: 3s; }
+
+@keyframes buttonTxt {
+  from {transform: translateY(50vh);}
+  to {transform: translateY(0%);}
+}
+
+.start-page button .bg{width: 0%; height: 0%; background: #fff; position: absolute;     top: 50%; left: 50%; transform: translate(-50%, -50%);border-radius: 15px;z-index: 3; transition: .3s ease-in-out;}
+.start-page button .txt{z-index: 5; display: inline-block; color: #000; position: relative;}
+.start-page button:hover .bg{width: 100%; height: 100%;}
+
+
+.how-to-play .containerNote{ background: rgba(0,0,0,0.6); border-radius: 15px; padding: 30px; color: #ffffffa1;animation-name: NotePad; animation-duration: 2s; } 
+@keyframes NotePad {
+  from {transform: scale(0);}
+  to {transform: scale(1);}
+}
+
+
+.how-to-play .containerNote h2{ font-size: 50px; margin-bottom: 30px; letter-spacing: -3px; }
+.how-to-play .containerNote ul{text-align: justify;}
+.how-to-play .containerNote li{padding: 10px 5px; color: #fff;transition: .3s ease-in-out;}
+.how-to-play .containerNote h3{ margin: 20px 0px 10px; font-size: 30px; color: #fff; }
+
+.how-to-play button{font-size: 41px; border-radius: 15px; border: 2px solid #ffffffa1; background: rgba(0,0,0,0.2); font-weight: 700;position: relative; transition: .3s ease-in-out; }
+
+.how-to-play button{ border: 2px solid #000; }
+.how-to-play button .bg{width: 0%; height: 0%; background: #fff; position: absolute;     top: 50%; left: 50%; transform: translate(-50%, -50%);border-radius: 15px;z-index: 3; transition: .3s ease-in-out;}
+.how-to-play button .txt{z-index: 5; display: inline-block; color: #ffffffa1; position: relative;}
+.how-to-play button:hover .bg{width: 100%; height: 100%;}
+.how-to-play button:hover .txt{color: #000;}
+
+
+
+.game-page .game-info{     position: fixed; left: 10px; top: 10px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); border-radius: 10px; padding: 10px;}
+.game-page .game-info h2{margin-right: 20px; color: #fff;position: relative;font-size: 24px;}
+.game-page .game-info h2::before{content: ""; position: absolute; right: -10px; background: #ffffff6e; height: 100%; width: 2px;}
+
+.game-page .game-info h2:last-child{margin-right: 0px;}
+.game-page .game-info h2:last-child::before{content: "";display: none;}
+
+.game-page .game-container .letters .letter{font-size: 25px;padding: 25px 20px 20px;background: url(../images/pop.svg)no-repeat top;background-size: 100% 150px;color: #fff;}
+/* .game-page .game-container .letters .letter::before{content: "";position: absolute; background: url(../images/pop.svg)no-repeat center / contain;width: 100%;height: 150px;top: 0px;left: 0px;z-index: -1;} */
+
+
+/* .how-to-play .containerNote li:hover{font-size: 17px;background-color:rgba(0,0,0,0.5);} */
+
+
+.game-over-popup .containerRestart{background: rgba(0,0,0,0.5);border-radius: 10px; padding: 20px 15px;margin-bottom: 20px;}
+.game-over-popup .containerRestart h2{font-size: 50px; color: #ffffff6e; letter-spacing: -2px;margin-bottom: 20px;}
+.game-over-popup .containerRestart .final-score{font-size: 24px; color: #fff; margin-bottom: 20px;}
+.game-over-popup .containerRestart .final-score .score{padding: 12px 12px 9px; display: inline-block; background: rgba(255,255,255,0.2); border-radius: 11px; line-height: .7em;}
+
+.game-over-popup .containerRestart button{font-size: 24px; border-radius: 10px; border: 2px solid #ffffffa1; background: rgba(0,0,0,0.2); font-weight: 700;position: relative; transition: .3s ease-in-out; }
+.game-over-popup .containerRestart button .bg{width: 0%; height: 0%; background: #fff; position: absolute;     top: 50%; left: 50%; transform: translate(-50%, -50%);border-radius: 10px;z-index: 3; transition: .3s ease-in-out;}
+.game-over-popup .containerRestart button .txt{z-index: 5; display: inline-block; color: #ffffffa1; position: relative;}
+.game-over-popup .containerRestart button:hover .bg{width: 100%; height: 100%;}
+.game-over-popup .containerRestart button:hover .txt{color: #000;}
+
+
+.level-selection .containerLvl{
+  background: rgba(0,0,0,0.6);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.level-selection .containerLvl h2{
+  color: #fff;
+  font-size: 32px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1.2em;
+}
+
+.level-selection .containerLvl .actionBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-selection .containerLvl .actionBtn button{ margin: 0px 10px; max-width: 160px; width: 160px; display: inline-block;}
+
+.level-selection .containerLvl .actionBtn button{font-size: 22px; border-radius: 10px; border: 2px solid #ffffffa1; background: rgba(0,0,0,0.2); font-weight: 700; position: relative; transition: .3s ease-in-out; color: #ffffffa1;}
+
+
+.level-selection .containerLvl .actionBtn button{ border: 2px solid #000; }
+.level-selection .containerLvl .actionBtn button .bg{width: 0%; height: 0%; background: #fff; position: absolute;     top: 50%; left: 50%; transform: translate(-50%, -50%);border-radius: 10px;z-index: 3; transition: .3s ease-in-out;}
+.level-selection .containerLvl .actionBtn button .txt{z-index: 5; display: inline-block; color: #ffffffa1; position: relative;}
+.level-selection .containerLvl .actionBtn button:hover .bg{width: 100%; height: 100%;}
+.level-selection .containerLvl .actionBtn button:hover .txt{color: #000;}
+
+.level-selection .containerLvl .actionBtn button:nth-child(1) .bg{background: green;}
+.level-selection .containerLvl .actionBtn button:nth-child(2) .bg{background: yellow;}
+.level-selection .containerLvl .actionBtn button:nth-child(3) .bg{background: red;}
+
+
 
 button {
   padding: 10px 20px;

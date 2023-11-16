@@ -6,20 +6,20 @@ function howToPlay() {
     var startPageHide = document.querySelector('.start-page');
     startPageHide.style.display = 'none';
     var displayLevels = document.querySelector('.how-to-play');
-    displayLevels.style.display = 'block';
+    displayLevels.style.display = 'flex';
 }
 function showLevels() {
     var startPageHide = document.querySelector('.how-to-play');
     startPageHide.style.display = 'none';
     var displayLevels = document.querySelector('.level-selection');
-    displayLevels.style.display = 'block';
+    displayLevels.style.display = 'flex';
 }
 function selectLevel(selectedLevel) {
     level = selectedLevel;
     var hideLevelsbox = document.querySelector('.level-selection');
     hideLevelsbox.style.display = 'none';
     var gameScreen = document.querySelector('.game-page');
-    gameScreen.style.display = 'block';
+    gameScreen.style.display = 'flex';
     document.getElementById('level').innerText = level;
     startTimer();
     createLetters();
@@ -108,9 +108,9 @@ function getLetterInterval() {
 }
 function endGame() {
     var gameOver = document.querySelector('.game-over-popup');
-    gameOver.style.display = 'block';
+    gameOver.style.display = 'flex';
     var finalScore = document.querySelector('.final-score');
-    finalScore.innerText = "Game over! Your final score is ".concat(score);
+    finalScore.innerHTML = "<div>Game over! Your final score is <span class=\"score\">".concat(score, "</span></div>");
     var gamePageView = document.querySelector('.game-page');
     gamePageView.style.display = 'none';
 }

@@ -7,14 +7,14 @@ function howToPlay(): void {
   let startPageHide = document.querySelector('.start-page') as HTMLElement;
   startPageHide.style.display = 'none';
   let displayLevels = document.querySelector('.how-to-play') as HTMLElement;
-  displayLevels.style.display = 'block';
+  displayLevels.style.display = 'flex';
 }
 
 function showLevels(): void {
   let startPageHide = document.querySelector('.how-to-play') as HTMLElement;
   startPageHide.style.display = 'none';
   let displayLevels = document.querySelector('.level-selection') as HTMLElement;
-  displayLevels.style.display = 'block';
+  displayLevels.style.display = 'flex';
 }
 
 function selectLevel(selectedLevel: string): void {
@@ -22,7 +22,7 @@ function selectLevel(selectedLevel: string): void {
   let hideLevelsbox = document.querySelector('.level-selection') as HTMLElement;
   hideLevelsbox.style.display = 'none';
   let gameScreen = document.querySelector('.game-page') as HTMLElement;
-  gameScreen.style.display = 'block';
+  gameScreen.style.display = 'flex';
   document.getElementById('level')!.innerText = level;
   startTimer();
   createLetters();
@@ -126,9 +126,9 @@ function getLetterInterval(): number | undefined {
 
 function endGame(): void {
   let gameOver = document.querySelector('.game-over-popup') as HTMLElement;
-  gameOver.style.display = 'block';
+  gameOver.style.display = 'flex';
   let finalScore = document.querySelector('.final-score') as HTMLElement;
-  finalScore.innerText = `Game over! Your final score is ${score}`;
+  finalScore.innerHTML = `<div>Game over! Your final score is <span class="score">${score}</span></div>`;
   let gamePageView = document.querySelector('.game-page') as HTMLElement;
   gamePageView.style.display = 'none';
 }
